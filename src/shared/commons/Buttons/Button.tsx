@@ -5,12 +5,13 @@ export interface IButton {
     size?: string,          // small, normal, large
     btnContext: string,
     handleClick?: any,
-    class?: string
+    class?: string,
+    style?: any
 }
 
 function Button(props: IButton) {
     return (
-        <button onClick={props.handleClick} className={props.typeClass + ' ' + props.size + ' ' + props.class}>
+        <button onClick={props.handleClick} className={props.typeClass + ' ' + props.size + ' ' + props.class} style={props.style}>
             {props.btnContext}
         </button>
     );

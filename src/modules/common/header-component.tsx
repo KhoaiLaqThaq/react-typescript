@@ -3,6 +3,7 @@ import {
     Layout,
     Menu
 } from 'antd';
+import { Link } from 'react-router-dom';
 
 const { Header } = Layout
 
@@ -15,9 +16,15 @@ export const HeaderComponent = (props: IHeader) => {
         <Header className="header"> 
             <div className="logo"></div>
             <Menu theme="dark" mode="horizontal" defaultActiveFirst>
-                <Menu.Item key="1">HOME</Menu.Item>
-                <Menu.Item key="2">PROFILE</Menu.Item>
-                <Menu.Item key="3">SETUP</Menu.Item>
+                <Menu.Item key="1">
+                    <Link to='/'>HOME</Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                    <Link to='/profile'>PROFILE</Link>
+                </Menu.Item>
+                <Menu.Item key="3">
+                    <Link to='/messages'>MESSAGE</Link>
+                </Menu.Item>
             </Menu>
         </Header>
     );

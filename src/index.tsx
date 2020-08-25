@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
-import './shared/css/modal.scss'
+import './shared/css/style.scss';
+import './shared/css/modal.scss';
 
 ReactDOM.render(
   <React.StrictMode>

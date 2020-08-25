@@ -4,10 +4,12 @@ const useEventListener = (eventName, handler, element = window) => {
     // Create a ref that stores handler
     const saveHandler = useRef<any>();
 
-    // Update ref.current value if handler changes.
-    // This allows our effect below to always get lates handler...
-    // ... Without us needing to pass it in effect deps arrays...
-    // ... and potentially cause to re-run every render
+    /**
+     * Update ref.current value if handler changes.
+     * This allows our effect below to always get lates handler...
+     * ... Without us needing to pass it in effect deps arrays...
+     * ... and potentially cause to re-run every render
+     */
     useEffect(() => {
         saveHandler.current = handler;
     }, [handler]);

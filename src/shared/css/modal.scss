@@ -37,12 +37,15 @@
 
     .wrap-header-close-modal {
         position: absolute;
-        top: 20px;
-        right: 25px;
-
+        top: 0;
+        right: 8px;
+        cursor: pointer;
+        z-index: 1060;
         .close {
             display: block;
-            cursor: pointer;
+            span {
+                font-size: 16px;
+            }
         }
     }
 }
