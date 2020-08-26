@@ -3,7 +3,6 @@ import {
     ArrowLeftOutlined,
     EllipsisOutlined,
     CheckOutlined,
-    LoadingOutlined
 } from '@ant-design/icons';
 import { message } from 'antd';
 import useEventListener from '../../../../shared/utils/use-event-listener';

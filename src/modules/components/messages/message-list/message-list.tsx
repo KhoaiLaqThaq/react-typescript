@@ -1,10 +1,8 @@
 import React from 'react';
-import { Layout, List, Avatar, Image } from 'antd';
+import { Layout} from 'antd';
 import MessageItem from '../messge-item/message-item';
 import MessageControlTop from '../control-top/message-control-top';
 import MessageDetail from '../message-detail/message-detail';
-
-const img = require('./../../../../shared/images/3.jpg');
 
 const { Content } = Layout;
 const HEIGHT_HEADER = 88;
