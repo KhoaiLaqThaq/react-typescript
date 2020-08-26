@@ -16,7 +16,7 @@ import useWindowDimensions from './shared/utils/use-window-dimentions';
 import BreadcrumbComponent from './modules/common/breadcrumb-component';
 import DashboardListComponent from './modules/components/dashboard/dashboard-list';
 import ProfileComponent from './modules/components/account/profile/profile-detail';
-import UserList from './modules/components/account/user-list/user-list';
+import MessageList from './modules/components/messages/message-list/message-list';
 // import SwitchComponent from "./modules/components/SwitchComponent";
 
 export const App = () => {
@@ -41,7 +41,7 @@ export const App = () => {
                             </Route>
                             <Route path={'/messages'}>
                                 <BreadcrumbComponent breadcrumbItems={breadcrumbs} handleBreadcrumbs={setBreadcrumbs}/>
-                                <UserList height={height}/>
+                                <MessageList height={height}/>
                             </Route>
                         </Layout>
                     </Switch>

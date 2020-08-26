@@ -1,3 +1,5 @@
+$border-radius-theme-message-preview: 10px;
+
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +12,7 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 9999;
 }
 
 .modal-backdrop {
@@ -45,6 +48,97 @@
             display: block;
             span {
                 font-size: 16px;
+            }
+        }
+    }
+
+    // modal for theme message
+    .wrap-theme-setup {
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        position: relative;
+        .wrap-theme-preview {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            .theme-title { font-size: 14px; display: block; font-weight: 500; margin-bottom: 5px; margin-top: 10px;}
+            .preview-message {
+                border: 1px solid #c5c5c5;
+                padding: 10px;
+                border-radius: 10px;
+                height: 145px;
+                .preview-message-left {
+                    width: fit-content;
+                    .preview-theme-text {
+                        width: fit-content; padding: 7px;
+                        border-top-right-radius: $border-radius-theme-message-preview;
+                        border-bottom-left-radius: $border-radius-theme-message-preview;
+                        border-bottom-right-radius: $border-radius-theme-message-preview;
+                        margin-bottom: 4px;
+                    }
+                }
+                .preview-message-right {
+                    float: right; width: fit-content; padding: 7px;
+                    border-top-left-radius: $border-radius-theme-message-preview;
+                    border-bottom-left-radius: $border-radius-theme-message-preview;
+                    border-top-right-radius: $border-radius-theme-message-preview;
+                }
+            }
+            .wrap-theme-color {
+                .theme-color-preview {
+                    position: relative;
+                    display: flex;
+                    .dot {
+                        position: relative;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;                        
+                        margin-right: 5px;
+                        $color-2: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(142,42,255,1) 0%, rgba(229,199,235,1) 100%);
+                        $color-3: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(249,71,158,1) 0%, rgba(229,199,235,1) 100%);
+                        $color-4: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(71,249,238,1) 0%, rgba(180,181,182,1) 100%);
+                        $color-5: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(244,129,88,1) 0%, rgba(219,219,219,1) 100%);
+                        $color-6: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(219,183,83,1) 0%, rgba(223,223,223,1) 100%);
+                        &.theme-style-1 {
+                            background: #1890FF;
+                            span {
+                                background: #1890FF;
+                            }
+                        }
+                        &.theme-style-2 {
+                            background: $color-2;
+                            span { background: $color-2;}
+                        }
+                        &.theme-style-3 {
+                            background: $color-3;
+                            span {background: $color-3;}
+                        }
+                        &.theme-style-4 {
+                            background: $color-4;
+                            span {background: $color-4;}
+                        }
+                        &.theme-style-5 {
+                            background: $color-5;
+                            span {background: $color-5;}
+                        }
+                        &.theme-style-6 {
+                            background: $color-6;
+                            span {background: $color-6;}
+                        }
+                        span {
+                            position: absolute;
+                            bottom: -5px;
+                            right: 0;
+                            width: 23px;
+                            height: 23px;
+                            border: 1px solid #fff;
+                            border-radius: 50px;
+                            display: table;
+                            padding-top: 4px;
+                        }
+                    }
+                }
             }
         }
     }

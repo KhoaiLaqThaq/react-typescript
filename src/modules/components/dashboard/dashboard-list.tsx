@@ -1,7 +1,5 @@
 import React, { useRef } from 'react';
 import { Layout } from 'antd';
-import { Chart } from 'react-charts';
-
 import Button from '../../../shared/commons/Buttons/Button';
 import { BUTTON_SIZES, BUTTON_TYPE } from '../../../shared/commons/constant';
 import Modal from '../../../shared/commons/Modals/Modal';
@@ -10,13 +8,10 @@ import DashboardChart from './dashboard-chart';
 const { Content } = Layout;
 
 function DashboardListComponent(props) {
-
     const modalRef = useRef(null);
-
     const onOpenModal = () => {
         modalRef.current.openModal();
     }
-
     const onCloseModal = () => {
         modalRef.current.close();
     }
