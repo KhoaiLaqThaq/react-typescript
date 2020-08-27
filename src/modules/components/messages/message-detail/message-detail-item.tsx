@@ -1,18 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Image } from 'antd';
-import { THEME_MESSAGE } from '../constant';
+import {
+    MoreOutlined
+} from '@ant-design/icons';
+import { THEME_MESSAGE, THEME_ACTIVE } from '../constant';
+import useEventListener from '../../../../shared/utils/use-event-listener';
 
 export interface IMessageDetailItem {
     key?: any,
     item: any,
+    themeMessage?: number
 }
 
 function MessageDetailItem(props: IMessageDetailItem) {
 
     const [item, setItem] = useState(null);
-    const [colorThemeMessage, setColorThemeMessage] = useState({right: THEME_MESSAGE.DEFAULT.RIGHT, left: THEME_MESSAGE.DEFAULT.LEFT});
-    const [changeThemeMessage, setChangeThemeMessage] = useState(false);
+    const [colorThemeMessage, setColorThemeMessage] = useState(THEME_MESSAGE.DEFAULT.RIGHT);
+    // const [changeThemeMessage, setChangeThemeMessage] = useState(false);
     const [showMessageDetail, setShowMessageDetail] = useState(false);
+    const [showOptionsOther, setShowOptionsOther] = useState(false);
+    const optionRef = useRef(null);
 
     useEffect(() => {
         if (props.item) {
@@ -21,22 +28,66 @@ function MessageDetailItem(props: IMessageDetailItem) {
     }, [props.item]);
 
     useEffect(() => {
-        if (changeThemeMessage) {
-            setColorThemeMessage({
-                'right': THEME_MESSAGE.DEFAULT.RIGHT,
-                'left': THEME_MESSAGE.DEFAULT.LEFT
-            });
+        switch (props.themeMessage) {
+            case THEME_ACTIVE.DEFAULT:
+                setColorThemeMessage(THEME_MESSAGE.DEFAULT.RIGHT);
+                break;
+            case THEME_ACTIVE.THEME_1:
+                setColorThemeMessage(THEME_MESSAGE.THEME_1.RIGHT);
+                break;
+            case THEME_ACTIVE.THEME_2:
+                setColorThemeMessage(THEME_MESSAGE.THEME_2.RIGHT);
+                break;
+            case THEME_ACTIVE.THEME_3:
+                setColorThemeMessage(THEME_MESSAGE.THEME_3.RIGHT);
+                break;
+            case THEME_ACTIVE.THEME_4:
+                setColorThemeMessage(THEME_MESSAGE.THEME_4.RIGHT);
+                break;
+            case THEME_ACTIVE.THEME_5:
+                setColorThemeMessage(THEME_MESSAGE.THEME_5.RIGHT);
+                break;
+            default:
+                break;
         }
-    }, [changeThemeMessage])
+    }, [props.themeMessage]);
 
     const onShowMessageTimeAndSender = () => {
         setShowMessageDetail(!showMessageDetail);
     }
+    
+    const onShowOptionsOther = () => {
+        setShowOptionsOther(true);
+    }
 
+    const handleShowOptionsOther = (event) => {
+        if (optionRef && optionRef.current && !optionRef.current.contains(event.target)) {
+            setShowOptionsOther(false);
+        }
+    }
+
+    const renderOptionOther = (isMe: boolean) => (
+        <div className={`message-option-other`} style={{ display: showOptionsOther ? 'block':'none' }} ref={optionRef}>
+            <ul>
+                {isMe && (<li>Chỉnh sửa</li>)}
+                <li>Sao chép</li>
+                <li>Trích dẫn</li>
+                <li>Chuyển tiếp</li>
+                { isMe ? (<li>Xóa</li>) : (<li>Báo cáo</li>)
+                }
+            </ul>
+        </div>
+    );
+
+    /**
+     * render message of me
+     * @param key 
+     * @param message 
+     */
     const renderMessagerMe = (key, message) => (
         <div key={key} className={`message-item right ${showMessageDetail ? 'active':''}`}>
             <div className="message-text" 
-                style={{ background: colorThemeMessage.right }}
+                style={{ background: colorThemeMessage }}
                 onClick={onShowMessageTimeAndSender}
             >
                 <span>{message.message}</span>
@@ -47,17 +98,25 @@ function MessageDetailItem(props: IMessageDetailItem) {
                     <div className="message-sender">Sent by {message.name}</div>
                 </>
             )}
-            <div className="message-option"></div>
+            <div className="message-option">
+                <MoreOutlined title={'Tùy chọn khác'} onClick={onShowOptionsOther}/>
+                {renderOptionOther(message.isMe)}
+            </div>
         </div>
     )
 
+    /**
+     * render message of user other
+     * @param key 
+     * @param message 
+     */
     const renderMessagerClient = (key, message) => (
         <div key={key} className={`message-item left ${showMessageDetail ? 'active':''}`}>
             <div className="message-avatar">
                 <Image src={message.avatar}/>
             </div>
             <div className="message-text"
-                style={{ background: colorThemeMessage.left }}
+                style={{ background: THEME_MESSAGE.DEFAULT.LEFT }}
                 onClick={onShowMessageTimeAndSender}
             >
                 <span>{message.message}</span>
@@ -68,9 +127,14 @@ function MessageDetailItem(props: IMessageDetailItem) {
                     <div className="message-sender">Sent by {message.name}</div>
                 </>
             )}
-            <div className="message-option"></div>
+            <div className="message-option">
+                <MoreOutlined title={'Tùy chọn khác'} onClick={onShowOptionsOther}/>
+                { renderOptionOther(message.isMe) }
+            </div>
         </div>
     )
+
+    useEventListener('mousedown', handleShowOptionsOther);
 
     return (
         item && (item.isMe ?

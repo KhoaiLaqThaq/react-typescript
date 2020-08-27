@@ -1,4 +1,4 @@
-
+export const HEIGHT_HEADER = 64;
 export const BUTTON_TYPE = {
     PRIMARY:    'btn btn-primary',
     SECONDARY:  'btn btn-secondary',

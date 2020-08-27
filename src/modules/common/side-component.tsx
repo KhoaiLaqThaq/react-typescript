@@ -9,6 +9,7 @@ import {
     Menu,
     Breadcrumb
 } from 'antd';
+import { HEIGHT_HEADER } from '../../shared/commons/constant';
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -17,12 +18,11 @@ export interface ISideComponent {
     heightDimentions: number
 }
 
+
 const SideComponent = (props: ISideComponent) => {
 
-
-
     return (
-        <Sider width={200} className="site-layout-background" style={{ height: props.heightDimentions }}>
+        <Sider width={200} className="site-layout-background" style={{ height: props.heightDimentions - HEIGHT_HEADER}}>
             <Menu
                 mode={'inline'}
                 defaultSelectedKeys={['1']}

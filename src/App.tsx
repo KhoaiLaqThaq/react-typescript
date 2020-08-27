@@ -17,6 +17,7 @@ import BreadcrumbComponent from './modules/common/breadcrumb-component';
 import DashboardListComponent from './modules/components/dashboard/dashboard-list';
 import ProfileComponent from './modules/components/account/profile/profile-detail';
 import MessageList from './modules/components/messages/message-list/message-list';
+import { HEIGHT_HEADER } from './shared/commons/constant';
 // import SwitchComponent from "./modules/components/SwitchComponent";
 
 export const App = () => {
@@ -27,7 +28,7 @@ export const App = () => {
         <Router>
             <Layout>
                 <Header/>
-                <Layout>
+                <Layout style={{height: height - HEIGHT_HEADER}}>
                     <SideComponent heightDimentions={height}/>
                     <Switch>
                         <Layout style={{ padding: '0 24px 24px' }}>

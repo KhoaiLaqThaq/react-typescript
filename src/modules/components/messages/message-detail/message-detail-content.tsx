@@ -1,21 +1,44 @@
-import React from 'react';
-import { Image } from 'antd';
+import React, { useMemo } from 'react';
+import { connect } from 'react-redux';
 import MessageDetailItem from './message-detail-item';
 
-export interface IMessageDetailContent {
-  messages: any
+export interface IMessageDetailContent extends StateProps {
+  messageList: any,
+  height: number
 }
 
 function MessageDetailContent(props: IMessageDetailContent) {
+  const themeMessage = useMemo(() => {
+    if (props.themeMessage) {
+      return props.themeMessage;
+    }
+  }, [props.themeMessage]);
+
+  const height = useMemo(() => {
+    if (props.height) {
+      return props.height - 200;
+    }
+  }, [props.height])
+
   return (
-    <div className="message-detail-content">
+    <div className="message-detail-content" style={{ height: height}}>
       { 
-        props.messages && props.messages.map(
-          (item, key) => <MessageDetailItem item={item} key={key} />
+        props.messageList && props.messageList.map(
+          (item, key) => <MessageDetailItem item={item} key={key} themeMessage={themeMessage} />
         )
       }
     </div>
   );
 }
 
-export default MessageDetailContent;
+const mapStateToProps = ({ messageListReducer }) => ({
+  messages: messageListReducer.messages,
+  themeMessage: messageListReducer.themeMessage
+});
+
+type StateProps = ReturnType<typeof mapStateToProps>;
+
+export default connect(
+  mapStateToProps,
+  null
+)(MessageDetailContent);

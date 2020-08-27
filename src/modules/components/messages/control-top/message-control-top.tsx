@@ -5,11 +5,19 @@ import {
     CheckOutlined,
 } from '@ant-design/icons';
 import { message } from 'antd';
+import { connect } from 'react-redux';
+import {
+    handleChooseThemeMessage
+} from './../message-list.reducer';
 import useEventListener from '../../../../shared/utils/use-event-listener';
 import Modal from '../../../../shared/commons/Modals/Modal';
 import { THEME_MESSAGE, THEME_ACTIVE } from '../constant';
 
-function MessageControlTop(props) {
+export interface IMessageControlTop extends DispatchProps {
+
+}
+
+function MessageControlTop(props: IMessageControlTop) {
     const actionRef = useRef(null);
     const themeMessageModalRef = useRef(null);
 
@@ -47,6 +55,7 @@ function MessageControlTop(props) {
     const handleChangeThemeActive = (themeId: number) => {
         setThemeActive(themeId);
         message.success('Thay đổi chủ đề thành công!');
+        props.handleChooseThemeMessage(themeId);
     }
 
     const onOpenModalThemeUI = () => {
@@ -133,4 +142,17 @@ function MessageControlTop(props) {
     );
 }
 
-export default MessageControlTop;
+// const mapStateToProps = ({ messageList }: IRootState) => ({
+    
+// });
+
+const mapDispatchToProps = {
+    handleChooseThemeMessage
+};
+
+type DispatchProps = typeof mapDispatchToProps;
+
+export default connect(
+    null, 
+    mapDispatchToProps
+)(MessageControlTop);
