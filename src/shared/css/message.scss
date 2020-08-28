@@ -175,6 +175,11 @@ $border-radius-message-item: 50px;
       .message-detail-content {
         width: 100%;
         overflow-y: auto;
+
+        .message-detail-box {
+          float: left;
+          height: auto;
+        }
         
         //-------------------Customize scroll bar----------------
         &::-webkit-scrollbar {
@@ -213,7 +218,7 @@ $border-radius-message-item: 50px;
             img { border-radius: 50%;cursor: pointer; }
           }
           &.left {
-            float: left;
+            // float: left;
             width: 100%;
             border-top-right-radius: $border-radius-message-item;
             border-bottom-right-radius: $border-radius-message-item;
@@ -295,12 +300,146 @@ $border-radius-message-item: 50px;
         }
       }
       .wrap-message-footer {
+        display: flex;
+        width: 100%;
+        max-height: 200px;
         margin-top: 2px;
-        padding-top: 5px;
+        padding: 5px;
         border-top-style: solid;
         border-top-width: 2px;
         border-top-color: #969494;
+        .message-footer-left {
+          display: flex;
+          width: 100%;
+          position: relative;
+          .message-footer-icon {
+            display: flex;
+            flex-direction: row;
+            width: 8%;
+            .icon, .icon-hide {
+              width: 32px;
+              height: 32px;
+              border-radius: 20px;
+              background-color: rgb(228, 228, 228);
+              display: table;
+              text-align: center;
+              &:first-child {
+                margin-right: 7px;
+              }
+              &:hover {
+                cursor: pointer;
+                background-color: #ccc;
+              }
+              span {
+                vertical-align: middle;
+                margin: 0 auto;
+                font-weight: 500;
+              }
+            }
+            .icon-hide {
+              display: none;
+            }
+          }
+          textarea {
+            resize: none;
+            background-color: rgb(228, 228, 228);
+            border-radius: 10px;
+            margin: 0 10px;
+            max-height: 100px;
+            min-height: 32px;
+            width: 92%;
+            padding-right: 30px;
+            &::-webkit-scrollbar {
+              width: 10px;
+            }
+            &::-webkit-scrollbar-track {
+              box-shadow: inset 0 0 5px grey; 
+              border-radius: 10px;
+            }
+            &::-webkit-scrollbar-thumb {
+              background-color: rgb(177, 176, 176);
+              border-radius: 10px;
+            }
+            &::-webkit-scrollbar-thumb:hover {
+              background: #969494; 
+            }
+          }
+          .message-send-icon {
+            position: absolute;
+            top: 0;
+            right: 17px;
+            color: rgb(24, 144, 255);
+            cursor: pointer;
+          }
+        }
+        .message-footer-right {
+          position: relative;
+          cursor: pointer;
+          &:hover {
+            span.icon-emotion {
+              color: rgb(255, 196, 0);
+            }
+          }
+          .message-emotion {
+            display: none;
+            position: absolute;
+            top: -245px;
+            left: -10px;
+            flex-direction: column;
+            background-color: #fff;
+            border-style: solid;
+            box-shadow: 7px 6px 10px 5px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.1) transparent;
+            border-radius: 10px;
+            &::before, &::after {
+              content: '';
+              width: 0;
+              height: 0;
+              position: absolute;
+              top: 100%;
+              border-style: solid;
+              right: 10px;
+            }
+            &::before {
+              border-width: 8px 8px 0 8px;
+              border-color: rgba(0, 0, 0, 0.1) transparent;
+            }
+            &::after {
+              border-width: 6px 6px 0 6px;
+              border-color: #fff transparent;
+            }
+            $size-emotion: 24px;
+            span {
+              width: 32px;
+              height: 32px;
+              &.like, &.heart, &.smile, &.meh, &.frown, &.star {
+                &:hover {
+                  svg {font-size: 24px !important;}
+                }
+              }
+              &.like { svg { color: rgb(24, 144, 255) } }
+              &.heart { svg { color: red; } }
+              &.smile { svg { color: yellowgreen; } }
+              &.meh { svg { color: orange; } }
+              &.frown { svg { color: red; } }
+              &.star { svg { color: yellow; } }
+            }
+          }
+
+        }
       }
     }
   }
+}
+
+@media only screen and (max-width: 1430px) {
+  .wrap-message-footer {
+    .message-footer-icon {
+      width: 10% !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+
 }

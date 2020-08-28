@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import MessageDetailItem from './message-detail-item';
 
@@ -8,6 +8,24 @@ export interface IMessageDetailContent extends StateProps {
 }
 
 function MessageDetailContent(props: IMessageDetailContent) {
+  const refScroll = useRef(null);
+  const flagRef = useRef(null);
+  const [heightBox, setHeightBox] = useState(null);
+
+  useEffect(() => {
+    if (flagRef && flagRef.current) {
+      const top = flagRef.current.getBoundingClientRect().top;
+      setHeightBox(top)
+    }
+  }, [flagRef])
+
+  useEffect(() => {
+    if ( refScroll && refScroll.current ){
+      console.log(refScroll.current.clientHeight);
+      refScroll.current.scrollTop = heightBox;
+    }
+  }, [heightBox])
+
   const themeMessage = useMemo(() => {
     if (props.themeMessage) {
       return props.themeMessage;
@@ -21,12 +39,15 @@ function MessageDetailContent(props: IMessageDetailContent) {
   }, [props.height])
 
   return (
-    <div className="message-detail-content" style={{ height: height}}>
-      { 
-        props.messageList && props.messageList.map(
-          (item, key) => <MessageDetailItem item={item} key={key} themeMessage={themeMessage} />
-        )
-      }
+    <div className="message-detail-content" style={{ height: height}} ref={refScroll}>
+      <div className="message-detail-box" style={{ height: heightBox}}>
+        { 
+          props.messageList && props.messageList.map(
+            (item, key) => <MessageDetailItem item={item} key={key} themeMessage={themeMessage} />
+          )
+        }
+        <div className="message-item" ref={flagRef}></div>
+      </div>
     </div>
   );
 }

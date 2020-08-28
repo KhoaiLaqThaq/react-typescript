@@ -15,3 +15,5 @@ export const BUTTON_SIZES = {
     SMALL:   'btn-sm',
     LARGE:   'btn-lg'
 }
+
+export const EVENT_ENTER_CODE = '↵';

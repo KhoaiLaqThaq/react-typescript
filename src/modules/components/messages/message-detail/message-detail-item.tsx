@@ -69,11 +69,11 @@ function MessageDetailItem(props: IMessageDetailItem) {
     const renderOptionOther = (isMe: boolean) => (
         <div className={`message-option-other`} style={{ display: showOptionsOther ? 'block':'none' }} ref={optionRef}>
             <ul>
-                {isMe && (<li>Chỉnh sửa</li>)}
-                <li>Sao chép</li>
-                <li>Trích dẫn</li>
-                <li>Chuyển tiếp</li>
-                { isMe ? (<li>Xóa</li>) : (<li>Báo cáo</li>)
+                {isMe && (<li key={1}>Chỉnh sửa</li>)}
+                <li key={2}>Sao chép</li>
+                <li key={3}>Trích dẫn</li>
+                <li key={4}>Chuyển tiếp</li>
+                { isMe ? (<li key={5}>Xóa</li>) : (<li key={6}>Báo cáo</li>)
                 }
             </ul>
         </div>
