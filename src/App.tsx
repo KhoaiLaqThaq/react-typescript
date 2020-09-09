@@ -7,11 +7,10 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
   } from "react-router-dom";
 import './App.css';
 import Header from "./modules/common/header-component";
-import SideComponent from './modules/common/side-component';
+// import SideComponent from './modules/common/side-component';
 import useWindowDimensions from './shared/utils/use-window-dimentions';
 import BreadcrumbComponent from './modules/common/breadcrumb-component';
 import DashboardListComponent from './modules/components/dashboard/dashboard-list';
@@ -29,11 +28,11 @@ export const App = () => {
             <Layout>
                 <Header/>
                 <Layout style={{height: height - HEIGHT_HEADER}}>
-                    <SideComponent heightDimentions={height}/>
+                    {/* <SideComponent heightDimentions={height}/> */}
                     <Switch>
                         <Layout style={{ padding: '0 24px 24px' }}>
                             <Route path={'/'} exact>
-                                <BreadcrumbComponent breadcrumbItems={breadcrumbs} handleBreadcrumbs={setBreadcrumbs}/>
+                                {/* <BreadcrumbComponent breadcrumbItems={breadcrumbs} handleBreadcrumbs={setBreadcrumbs}/> */}
                                 <DashboardListComponent/>
                             </Route>
                             <Route path={'/profile'}>

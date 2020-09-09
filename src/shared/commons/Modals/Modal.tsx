@@ -53,7 +53,7 @@ const Modal = forwardRef((props: IModal, ref) => {
                 <div onClick={onCloseBackdrop} className={"modal-backdrop"}/>
                 <div className={"modal-box"}>
                     <div className="wrap-header-close-modal">
-                        <a className={'close'} onClick={close}><CloseOutlined /></a>
+                        <div className={'close'} onClick={close}><CloseOutlined /></div>
                     </div>
                     {props.children}
                 </div>

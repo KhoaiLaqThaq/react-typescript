@@ -4,11 +4,16 @@ import Button from '../../../shared/commons/Buttons/Button';
 import { BUTTON_SIZES, BUTTON_TYPE } from '../../../shared/commons/constant';
 import Modal from '../../../shared/commons/Modals/Modal';
 import DashboardChart from './dashboard-chart';
+import TransactionControlTop from '../transactions/control-top/transaction-control-top';
+import TransactionList from '../transactions/transaction-list/transaction-list';
 
 const { Content } = Layout;
 
 function DashboardListComponent(props) {
     const modalRef = useRef(null);
+
+    const dateNow = new Date();
+
     const onOpenModal = () => {
         modalRef.current.openModal();
     }
@@ -17,11 +22,13 @@ function DashboardListComponent(props) {
     }
 
     return (
-        <Content className="site-layout-background style-layout-content">
+        <Content className="wrap-transaction site-layout-background style-layout-content">
             <div className={'wrap-content-header'}>
-                <Button class={'float-right'} btnContext={'Click me'} size={BUTTON_SIZES.SMALL} typeClass={BUTTON_TYPE.SECONDARY} handleClick={onOpenModal} />
+                <TransactionControlTop dateNow={dateNow}/>
             </div>
-            <DashboardChart />
+            <div className={'wrap-content-list'}>
+                <TransactionList transactionList={props.data}/>
+            </div>
             <Modal ref={modalRef} allowCloseEscKey={true} allowCloseBackdrop={true}>
                 <div className="modal-title">Modal title</div>
                 <div className="modal-body">
@@ -34,6 +41,10 @@ function DashboardListComponent(props) {
             </Modal>
         </Content>
     );
+}
+
+DashboardListComponent.defaultProps = {
+    data: null
 }
 
 export default DashboardListComponent;

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Image } from 'antd';
 
 export interface IMessageItem {
-  messageActive: boolean,
+  messageActive: any,
   item: any,
   handleSetActiveMessage: (messageId: any) => void
 }
@@ -15,7 +15,7 @@ function MessageItem(props) {
       }
   }, [props.item]);
   
-  const onImageAvatarNotFound = (e, item: any) => {
+  const onImageAvatarNotFound = (e, data: any) => {
     e.target.onerror = null;
     const canvas = document.createElement('canvas');
     canvas.setAttribute('width', '32px');
@@ -23,9 +23,9 @@ function MessageItem(props) {
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = '#8ac891'
     ctx.fillRect(0, 0, 48, 48);
-    ctx.fillStyle = `#ccc`;
+    ctx.fillStyle = `#fff`;
     ctx.font = "28px Noto  Sans CJK JP";
-    ctx.fillText(item && item.name[0], 6, 25);
+    ctx.fillText(data && data.name[0], 6, 25);
     e.target.src = canvas.toDataURL('image/jpeg', 1.0);
     return true;
   }

@@ -17,7 +17,7 @@ function MessageDetailContent(props: IMessageDetailContent) {
       const top = flagRef.current.getBoundingClientRect().top;
       setHeightBox(top)
     }
-  }, [flagRef])
+  }, [flagRef, props.messageList])
 
   useEffect(() => {
     if ( refScroll && refScroll.current ){

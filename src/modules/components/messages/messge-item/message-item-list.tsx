@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image } from 'antd';
+// import { Image } from 'antd';
 import MessageItem from './message-item';
 
 export interface IMessageItemList {

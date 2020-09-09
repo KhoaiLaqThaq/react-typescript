@@ -1,0 +1,55 @@
+.wrap-transaction {
+    margin-top: 40px;
+    .transaction-header {
+        width: 100%;
+        position: relative;
+        .transaction-container {
+            width: 60%;
+            display: flex;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1000;
+            overflow: hidden;
+            ul {
+                display: flex;
+                list-style: none;
+                height: 40px;
+                .menu-item {
+                    padding: 5px 20px;
+                    width: 120px;
+                    box-shadow: 0 2px #ccc;
+                    color: #969494;
+                    cursor: pointer;
+                    font-weight: 500;
+                    &.active {
+                        color: #000000;
+                        box-shadow: 0 3px #000000;
+                    }
+                }
+            }
+        }
+        
+    }
+    .wrap-content-list {
+        width: 100%;
+        display: block;
+        position: relative;
+        .transaction-not-found {
+            text-align: center;
+            width: 100%;
+            margin-top: 5rem;
+            .message-notify {
+               display: block; 
+            }
+            span {
+                width: 5rem;
+                height: 5rem;
+                svg {
+                    font-size: 60px;
+                }
+            }
+        }
+        
+    }
+}

@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './shared/css/style.scss';
 import './shared/css/modal.scss';
 import './shared/css/message.scss';
+import './shared/css/transaction.scss';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './shared/reducers';
 import thunk from 'redux-thunk';

@@ -21,7 +21,7 @@ function BreadcrumbComponent(props: IBreadcrumbComponent) {
         <Breadcrumb style={{ margin: '16px 0' }}>
             {props.breadcrumbItems && props.breadcrumbItems.map((item, key) => (
                 <Breadcrumb.Item key={key} onClick={() => onActionAddBreadcrumb(key)}>
-                    <a>{item}</a>
+                    <div>{item}</div>
                 </Breadcrumb.Item>
             ))}
         </Breadcrumb>
