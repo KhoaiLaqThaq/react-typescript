@@ -9,8 +9,10 @@ import useEventListener from '../../utils/use-event-listener';
 
 export interface IModal {
     children: any,
-    allowCloseEscKey?: boolean,
-    allowCloseBackdrop?: boolean
+    allowCloseEscKey?: boolean;
+    allowCloseBackdrop?: boolean;
+    openFromTransaction?: boolean;
+    resetStatusPopup?: () => void;
 }
 
 const Modal = forwardRef((props: IModal, ref) => {
@@ -29,6 +31,9 @@ const Modal = forwardRef((props: IModal, ref) => {
     };
 
     const close = () => {
+        if (props.openFromTransaction) {
+            props.resetStatusPopup();
+        }
         setDisplay(false);
     };
 

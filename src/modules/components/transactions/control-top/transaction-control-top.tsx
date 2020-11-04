@@ -52,14 +52,14 @@ export const TransactionControlTop = (props: ITransactionControlTop) => {
             <div className="transaction-container">
                 <ul className={'menu-items'}>
                     {data.map((item, key) => (
-                        <li  className={`menu-item ${item.code === monthActive ? 'active':''}`} 
+                        <li  className={`menu-item ${item.code === monthActive ? 'active' : ''}`} 
                             key={key}
                             onClick={() => onElementActive(item.code)}
                         >
                             {item.fullText}
                         </li>
                     ))}
-                    <li className={'menu-item'}>Tương lai</li>
+                    <li className={`menu-item ${monthActive === 99 ? 'active' : ''}`} onClick={() => onElementActive(99)}>Tương lai</li>
                 </ul>
             </div>
         </div>

@@ -12,6 +12,7 @@ const { Header } = Layout;
 
 export interface IHeader {
     name?: string;
+    openPopup: () => void;
 }
 
 export const HeaderComponent = (props: IHeader) => {
@@ -26,15 +27,17 @@ export const HeaderComponent = (props: IHeader) => {
                     <Link to='/profile'>Báo cáo</Link>
                 </Menu.Item>
                 <Menu.Item key="5" className={'ant-menu-item-add'}>
-                    <div className={'menu-item-center'}>
-                        <PlusOutlined  />
+                    <div className={'menu-item-center'} onClick={props.openPopup}>
+                        <div className="menu-item-line">
+                            <PlusOutlined />
+                        </div>
                     </div>
                 </Menu.Item>
                 <Menu.Item key="3">
-                    <Link to='/messages'>Lập kế hoạch</Link>
+                    <Link to='/planning'>Lập kế hoạch</Link>
                 </Menu.Item>
                 <Menu.Item key="4">
-                    <Link to='/messages'>Tài khoản</Link>
+                    <Link to='/account'>Tài khoản</Link>
                 </Menu.Item>
             </Menu>
         </Header>

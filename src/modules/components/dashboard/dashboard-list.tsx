@@ -6,6 +6,7 @@ import Modal from '../../../shared/commons/Modals/Modal';
 import DashboardChart from './dashboard-chart';
 import TransactionControlTop from '../transactions/control-top/transaction-control-top';
 import TransactionList from '../transactions/transaction-list/transaction-list';
+import { v4 as uuidv4 } from 'uuid';
 
 const { Content } = Layout;
 

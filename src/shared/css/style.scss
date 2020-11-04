@@ -1,4 +1,8 @@
 $color-major-header: #001529;
+.container-wrapper {
+    position: relative;
+    overflow: hidden;
+}
 /*----------------HEADER------------------------*/
 header {
    ul {
@@ -21,8 +25,17 @@ header {
                height: 80px;
                border-radius: 50%;
                transition: 0.3s;
-               &:hover {
-                   background-color: #1ed760;
+
+               .menu-item-line {
+                   width: 90%;
+                   height: 90%;
+                   margin-top: 5% !important;
+                   margin: 0 auto;
+                   border-radius: 50%;
+                   background-color: $color-major-header;
+                   border-style: solid;
+                   border-width: 4px;
+                   border-color: rgb(33, 173, 253);
                }
                span {
                    text-align: center;

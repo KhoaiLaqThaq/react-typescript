@@ -1,0 +1,70 @@
+.wrap-transaction {
+  margin-top: 40px;
+}
+
+.wrap-transaction .transaction-header {
+  width: 100%;
+  position: relative;
+}
+
+.wrap-transaction .transaction-header .transaction-container {
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.wrap-transaction .transaction-header .transaction-container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  height: 40px;
+}
+
+.wrap-transaction .transaction-header .transaction-container ul .menu-item {
+  padding: 5px 20px;
+  width: 120px;
+  -webkit-box-shadow: 0 2px #ccc;
+          box-shadow: 0 2px #ccc;
+  color: #969494;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.wrap-transaction .transaction-header .transaction-container ul .menu-item.active {
+  color: #000000;
+  -webkit-box-shadow: 0 3px #000000;
+          box-shadow: 0 3px #000000;
+}
+
+.wrap-transaction .wrap-content-list {
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+.wrap-transaction .wrap-content-list .transaction-not-found {
+  text-align: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.wrap-transaction .wrap-content-list .transaction-not-found .message-notify {
+  display: block;
+}
+
+.wrap-transaction .wrap-content-list .transaction-not-found span {
+  width: 5rem;
+  height: 5rem;
+}
+
+.wrap-transaction .wrap-content-list .transaction-not-found span svg {
+  font-size: 60px;
+}
+/*# sourceMappingURL=transaction.css.map */
